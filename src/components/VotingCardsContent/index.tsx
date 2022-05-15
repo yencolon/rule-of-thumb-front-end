@@ -1,7 +1,7 @@
 import * as React from "react";
-import VotingCardsGrid from "../VotingCardsGrid";
-import VotingCardsList from "../VotingCardsList";
-import VotingContentHeading from "../VotingContentHeading";
+import VotingCardsGrid from "../../layouts/VotingCardsGrid";
+import VotingCardsList from "../../layouts/VotingCardsList";
+import VotingCardContentHeading from "../VotingCardContentHeading";
 import "./styles.css"
 
 const VotingCardsContent = () => {
@@ -9,7 +9,7 @@ const VotingCardsContent = () => {
 
     return (
         <div className="voting-cards__container">
-            <VotingContentHeading onChange={setViewStyle}/>
+            <VotingCardContentHeading onChange={setViewStyle}/>
             {
                 viewStyle === "grid" ? 
                 <VotingCardsGrid /> :
