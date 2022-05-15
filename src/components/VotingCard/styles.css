@@ -1,0 +1,14 @@
+.voting-card__squared {
+    width: 100%;
+    height: 100%;
+}
+
+.voting-card__squared > img {
+    width: 100%;
+    height: 100%;
+}
+
+.voting-card__long_rectangle {
+    width: 100%;
+    height: 100%;
+}
