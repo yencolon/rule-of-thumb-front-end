@@ -1,9 +1,14 @@
 import * as React from 'react';
 import "./styles.css"
 
-const VotingCardsGrid = () => {
+interface IVotingCardsGridProps {
+    children?: React.ReactNode
+}
+
+const VotingCardsGrid = ({ children }: IVotingCardsGridProps) => {
     return (
         <div className="voting-grid__container">
+            {children}
         </div>
     )
 }

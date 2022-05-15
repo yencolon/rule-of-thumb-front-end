@@ -1,9 +1,16 @@
 import * as React from 'react';
 import "./styles.css"
 
-const VotingCardsList = () => {
+
+interface IVotingCardsListProps {
+    children?: React.ReactNode
+}
+
+
+const VotingCardsList = ({children}: IVotingCardsListProps) => {
     return (
         <div className='voting-list__container'>
+            {children}
         </div>
     )
 }

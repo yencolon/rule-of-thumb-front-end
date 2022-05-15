@@ -1,15 +1,16 @@
 import * as React from 'react';
-import Test from "../../assets/img/elon.png"
+import { ICelebrity } from '../../types/celebrity';
 import "./styles.css";
 
 interface IVotingCardProps {
-    showAs?: 'square' | 'long-rectangle'
+    showAs?: 'square' | 'long-rectangle',
+    celebrity: ICelebrity
 }
 
-const VotingCard = ({ showAs = 'square' }: IVotingCardProps) => {
+const VotingCard = ({ celebrity, showAs = 'square' }: IVotingCardProps) => {
     return (
         <div className={showAs === 'square' ? 'voting-card__squared': 'voting-card__long_rectangle'}>
-            <img src={Test} alt="ALT" />
+            <img src={celebrity.picture} alt={celebrity.name} />
         </div>
     )
 }
