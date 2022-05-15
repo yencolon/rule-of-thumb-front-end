@@ -47,7 +47,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                 </div>
             </div>
             <div className="gauge-bar__container">
-                <GaugeBar />
+                <GaugeBar positiveVotes={celebrity.votes.positive} negativeVotes={celebrity.votes.negative}/>
             </div>
         </div>
     )
