@@ -7,7 +7,8 @@ export const getCelebrities = () => {
     return data.map(celebrity => {
         return {
             ...celebrity, 
-            picture: imagesMap[celebrity.name]
+            picture: imagesMap[celebrity.name],
+            overallVotesResult: celebrity.votes.positive > celebrity.votes.negative
         }
     });
 }
