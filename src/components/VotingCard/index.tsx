@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ICelebrity } from '../../types/celebrity';
+import { calculateHowMuchTimePastFromNow } from '../../utils/dates';
 import "./styles.css";
 
 interface IVotingCardProps {
@@ -9,8 +10,13 @@ interface IVotingCardProps {
 
 const VotingCard = ({ celebrity, showAs = 'square' }: IVotingCardProps) => {
     return (
-        <div className={showAs === 'square' ? 'voting-card__squared': 'voting-card__long_rectangle'}>
+        <div className={showAs === 'square' ? 'voting-card__container': 'voting-card__container--gradient'}>
             <img src={celebrity.picture} alt={celebrity.name} />
+            <div className="voting-info__container">
+                <h2>{celebrity.name}</h2>
+                <p>{celebrity.description}</p>
+                <p>{`about ${calculateHowMuchTimePastFromNow(celebrity.lastUpdated)} in`} <span>{celebrity.category}</span></p>
+            </div>
         </div>
     )
 }
