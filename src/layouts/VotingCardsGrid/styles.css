@@ -15,6 +15,7 @@
         justify-items: center;
         row-gap: 0.5em;
         column-gap: 0.5em;
+        overflow-x: hidden;
     }
 }
 
@@ -26,5 +27,6 @@
         column-gap: 0.5em;
         align-items: center;
         justify-items: center;
+        overflow-x: hidden;
     }
 };
