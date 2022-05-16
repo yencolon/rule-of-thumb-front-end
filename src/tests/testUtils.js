@@ -5,6 +5,9 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import celebritiesReducer from '../redux/celebritiesSlice'
 
+/**
+ *  Boilerplate to test components that use on redux 
+ */
 function render(
     ui,
     {

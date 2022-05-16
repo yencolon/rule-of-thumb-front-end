@@ -4,6 +4,10 @@ import { imagesMap } from "./images";
 
 const itemStorageName = "celebrities"
 
+/**
+ * Takes the celebrities from localstore or from json
+ * and maps it into a new array with some extras attribute
+ */
 export const getCelebrities = (): Array<ICelebrity> => {
     const data = getCelebritiesFromLocalStorageOrResources()
     return data.map(celebrity => {
@@ -15,6 +19,11 @@ export const getCelebrities = (): Array<ICelebrity> => {
     });
 }
 
+/**
+ * Store a vote 
+ * @param celebrity celebrity to modify
+ * @param approved vote value true (positive) false (negative)
+ */
 export const emitVote = (celebrity: ICelebrity, approved: boolean): Array<ICelebrity> | undefined => {
     const data  = getCelebrities()
     const indexOfCelebrity = data.findIndex(celeb => celeb.name === celebrity.name)
@@ -33,6 +42,9 @@ export const emitVote = (celebrity: ICelebrity, approved: boolean): Array<ICeleb
     }
 }
 
+/**
+ * Checks when retrieves data from local storage or json file
+ */
 const getCelebritiesFromLocalStorageOrResources = (): Array<ICelebrity> => {
     const exitingCelebritiesData = localStorage.getItem(itemStorageName)
 
