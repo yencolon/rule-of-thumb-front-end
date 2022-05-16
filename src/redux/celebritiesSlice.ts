@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICelebrity } from '../types/celebrity'
 
 export interface CelebritiesState {
-    celebritiesList: Array<ICelebrity>
+    celebritiesList: Array<ICelebrity>,
+    celebritiesShowMode: "list" | "grid"
 }
 
 const initialState: CelebritiesState  = {
-    celebritiesList: []
+    celebritiesList: [],
+    celebritiesShowMode: "grid"
 }
 
 export const counterSlice = createSlice({
@@ -16,10 +18,13 @@ export const counterSlice = createSlice({
         setCelebrities: (state: CelebritiesState, action: PayloadAction<Array<ICelebrity>>) => {
             state.celebritiesList = action.payload
         },
+        setCelebritiesShowMode: (state: CelebritiesState, action: PayloadAction<"list" | "grid">) => {
+            state.celebritiesShowMode = action.payload
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {  setCelebrities } = counterSlice.actions
+export const {  setCelebrities, setCelebritiesShowMode } = counterSlice.actions
 
 export default counterSlice.reducer
