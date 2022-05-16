@@ -33,7 +33,7 @@
     padding-bottom: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     background:  linear-gradient(180deg,rgba(0,0,0,.0001) 0%,rgba(0,0,0,.6) 100%) 
 }
 
@@ -133,7 +133,7 @@
 
 .voting-buttons__container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 20px;
 }
 
