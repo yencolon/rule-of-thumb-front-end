@@ -6,6 +6,8 @@ import thumbDown from "../../assets/img/thumbs-down.svg"
 import "./styles.css";
 import GaugeBar from "../GaugeBar";
 import { emitVote } from "../../utils/api";
+import { useDispatch } from "react-redux";
+import { setCelebrities } from "../../redux/celebritiesSlice";
 
 interface IVotingCardProps {
     showAs?: "square" | "long-rectangle",
@@ -20,10 +22,10 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
     // emitted - is this state, vote has been emitted and the user can vote again 
     const [readyToVote, setReadyToVote] = React.useState<"waiting" | "ready" | "emitted">("waiting")
     const [voteToCast, setVoteToCast] = React.useState(true)
-
+    const dispatch = useDispatch()
+    
     const overallResult = celebrity.overallVotesResult ? "thumbs up" : "thumbs down"
     const overallResultIcon = celebrity.overallVotesResult ? thumbUp : thumbDown
-
 
     const onStartVoting = (approved: boolean) => {
         setReadyToVote('ready')
@@ -34,8 +36,9 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
         if (readyToVote === 'emitted')
             setReadyToVote('waiting')
         else {
-            emitVote(celebrity, voteToCast)
+            const result = emitVote(celebrity, voteToCast)
             setReadyToVote('emitted')
+            if(result) dispatch(setCelebrities(result))
         }
     }
 

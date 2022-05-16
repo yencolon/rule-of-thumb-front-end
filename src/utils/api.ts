@@ -15,12 +15,9 @@ export const getCelebrities = (): Array<ICelebrity> => {
     });
 }
 
-export const emitVote = (celebrity: ICelebrity, approved: boolean) => {
+export const emitVote = (celebrity: ICelebrity, approved: boolean): Array<ICelebrity> | undefined => {
     const data  = getCelebritiesFromLocalStorageOrResources()
-    console.log(celebrity)
     const indexOfCelebrity = data.findIndex(celeb => celeb.name === celebrity.name)
-
-    console.log(indexOfCelebrity)
 
     if(indexOfCelebrity !== -1){
         data[indexOfCelebrity] = {
@@ -31,6 +28,8 @@ export const emitVote = (celebrity: ICelebrity, approved: boolean) => {
             }
         } 
         localStorage.setItem(itemStorageName, JSON.stringify(data))
+
+        return data
     }
 }
 
