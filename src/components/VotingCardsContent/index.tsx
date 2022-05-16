@@ -16,16 +16,17 @@ const VotingCardsContent = () => {
 
     React.useEffect(() => {
         dispatch(setCelebrities(getCelebrities()))
+    }, [dispatch])
 
+    React.useLayoutEffect(() => {
         function handleResize() {
-            if (window.innerWidth <= 500 && viewStyle === 'list')
+            if (window.outerWidth <= 500 && viewStyle === 'list')
                 dispatch(setCelebritiesShowMode('grid'))
         }
 
         window.addEventListener("resize", handleResize);
         handleResize();
         return () => window.removeEventListener("resize", handleResize);
-
     }, [dispatch, viewStyle])
 
     const renderCelebritiesCards =
