@@ -1,3 +1,22 @@
+# Technical FED - Zemoga 
+
+This is a [Technical skills test](https://github.com/zemoga/ui-test) for Zemoga
+## To see this app working  
+
+[Live View](https://jovial-pudding-d2ee55.netlify.app/)
+
+## Technologies needed to run this project
+* Node.js v15.0.0 or higher
+* Yarn Package Manager v1.22.17 or higher
+* npm v8.5.5 or higher
+
+## Frameworks and utilities
+
+* React
+* Redux/ReduxToolKits
+* Jest and React Testing Library
+* Netifly 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

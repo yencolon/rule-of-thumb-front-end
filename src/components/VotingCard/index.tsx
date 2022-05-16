@@ -21,6 +21,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
     // ready - user clicked on some thumb button, so vote button is enabled
     // emitted - is this state, vote has been emitted and the user can vote again 
     const [readyToVote, setReadyToVote] = React.useState<"waiting" | "ready" | "emitted">("waiting")
+    // Store is current celebrity has a positive or negative vote to cast
     const [voteToCast, setVoteToCast] = React.useState(true)
     const dispatch = useDispatch()
     
@@ -33,6 +34,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
     }
 
     const onVote = () => {
+        // If vote was emitted then, state should back to waiting
         if (readyToVote === 'emitted')
             setReadyToVote('waiting')
         else {
@@ -47,7 +49,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
             <img src={celebrity.picture} alt={celebrity.name} />
             {
                 showAs === 'long-rectangle' &&
-                <div className="voting-trend__indicator--floating" aria-label={overallResult}>
+                <div className="voting-trend__indicator--floating">
                     <img src={overallResultIcon} alt={overallResult} />
                 </div>
             }
@@ -56,7 +58,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                     <div>
                         {
                             showAs === 'square' &&
-                            <div className="voting-trend__indicator" aria-label={overallResult}>
+                            <div className="voting-trend__indicator">
                                 <img src={overallResultIcon} alt={overallResult} />
                             </div>
                         }

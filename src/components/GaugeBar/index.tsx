@@ -9,6 +9,7 @@ interface IGaugeBarProps {
 }
 
 const GaugeBar = ({ positiveVotes, negativeVotes }: IGaugeBarProps) => {
+    // Compute percentage according to total votes
     const positivePercentage = Math.round( (positiveVotes * 100 / (positiveVotes + negativeVotes)) * 10) / 10
     const negativePercentage = Math.round( (100 - positivePercentage ) * 10 ) / 10
 

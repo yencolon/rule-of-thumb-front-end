@@ -7,6 +7,9 @@ import MarkZPng from "../assets/img/mark.png"
 
 type ImagesMap = { [key: string]: string }
 
+/**
+ * Map of exiting images
+ */
 export const imagesMap: ImagesMap  = {
     "Cristina Fernández de Kirchner": CristinaFPng,
     "Elon Musk": ElonMPng,

@@ -35,15 +35,16 @@ const VotingCardsContent = () => {
 
     return (
         <div className="voting-cards__container">
-            <VotingCardContentHeading value={viewStyle} onChange={(value) => dispatch(setCelebritiesShowMode(value))} />
+            <VotingCardContentHeading />
             {
                 viewStyle === "grid" ?
-                    <VotingCardsGrid>
+                    (<VotingCardsGrid>
                         {renderCelebritiesCards}
-                    </VotingCardsGrid> :
-                    <VotingCardsList>
+                    </VotingCardsGrid>)
+                    :
+                    (<VotingCardsList>
                         {renderCelebritiesCards}
-                    </VotingCardsList>
+                    </VotingCardsList>)
             }
         </div>
     )

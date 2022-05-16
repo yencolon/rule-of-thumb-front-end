@@ -7,7 +7,7 @@ interface IVotingCardsGridProps {
 
 const VotingCardsGrid = ({ children }: IVotingCardsGridProps) => {
     return (
-        <div className="voting-grid__container">
+        <div className="voting-grid__container" aria-label="grid-container">
             {children}
         </div>
     )
