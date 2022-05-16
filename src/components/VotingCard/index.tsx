@@ -49,19 +49,21 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                 </div>
             }
             <div className={showAs === "square" ? "voting-info__container--floating" : "voting-info__container"}>
-                <div style={{ display: "flex", alignItems: "baseline" }}>
-                    {
-                        showAs === 'square' &&
-                        <div className="voting-trend__indicator" aria-label={overallResult}>
-                            <img src={overallResultIcon} alt={overallResult} />
-                        </div>
-                    }
+                <div className="voting-info_heading">
+                    <div>
+                        {
+                            showAs === 'square' &&
+                            <div className="voting-trend__indicator" aria-label={overallResult}>
+                                <img src={overallResultIcon} alt={overallResult} />
+                            </div>
+                        }
+                    </div>
                     <div>
                         <h2 className="voting-info__title">{celebrity.name}</h2>
-                        <p className="voting-info__description">{celebrity.description}</p>
+                        <p className="voting-info__description">{celebrity.description}</p> 
                     </div>
                 </div>
-                <div>
+                <div className="voting-section_container">
                     <p className="voting-buttons__time">
                         {
                             readyToVote === 'emitted' ? "Thank you for your vote!" :
@@ -96,7 +98,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                     </div>
                 </div>
             </div>
-            <div className="gauge-bar__container">
+            <div className={showAs === 'long-rectangle' ? 'gauge-bar__container--floating--list' : 'gauge-bar__container--floating'}>
                 <GaugeBar positiveVotes={celebrity.votes.positive} negativeVotes={celebrity.votes.negative} />
             </div>
         </div>

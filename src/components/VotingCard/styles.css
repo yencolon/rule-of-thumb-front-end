@@ -26,14 +26,17 @@
 .voting-info__container--floating {
     position: absolute;
     top: 0;
+    bottom: 10%;
     font-size: 15px;
     color: var(--color-white);
-    height: 100%;
+    width: 100%;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background: linear-gradient(180deg,rgba(0,0,0,.0001) 0%,rgba(0,0,0,.6) 100%) 
+    justify-content: end;
+    background:  linear-gradient(180deg,rgba(0,0,0,.0001) 0%,rgba(0,0,0,.6) 100%) 
 }
+
 
 .voting-info__container {
     font-size: 18px;
@@ -42,10 +45,27 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1rem 0 0 ;
+    padding: 1rem 0 0 0 ;
 }
 
 /**** Info ******/ 
+
+.voting-info_heading {
+    display: flex;
+}
+
+.voting-info_heading > :first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.voting-info_heading > :nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
 
 .voting-info__title {
     color: var(--color-white);
@@ -69,8 +89,8 @@
     font-size: 1rem;
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
+    padding-right: 1rem;
 }
-
 
 .voting-buttons__time {
     font-weight: 700;
@@ -81,11 +101,10 @@
 
 .voting-trend__indicator {
     padding: 0.5rem;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .voting-trend__indicator--floating {
@@ -107,6 +126,10 @@
 }
 
 /**** Voting buttons ******/
+
+.voting-section_container {
+    padding-right: 1rem;
+}
 
 .voting-buttons__container {
     display: flex;
@@ -142,7 +165,30 @@
     outline: 2px solid var(--color-white)
 }
 
-.gauge-bar__container {
+.gauge-bar__container--floating {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    height: 10%;
 }
+
+.gauge-bar__container--floating--list {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+}
+
+
+/* @media all and (max-width: 500px) {
+    .voting-info__container--floating {
+        width: 100%;
+    }
+}
+
+@media all and  (min-width: 768px) {
+
+}
+
+@media all and  (min-width: 1100px) {
+} */
