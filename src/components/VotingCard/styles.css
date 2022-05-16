@@ -118,11 +118,11 @@
     align-items: center;
 }
 
-.voting-trend__indicator[aria-label="thumbs down"], .voting-trend__indicator--floating[aria-label="thumbs down"] {
+.voting-trend__indicator[title="thumbs down"], .voting-trend__indicator--floating[aria-label="thumbs down"] {
     background-color: rgba(var(--color-yellow-negative), 1);
 }
 
-.voting-trend__indicator[aria-label="thumbs up"], .voting-trend__indicator--floating[aria-label="thumbs up"]{
+.voting-trend__indicator[title="thumbs up"], .voting-trend__indicator--floating[aria-label="thumbs up"]{
     background-color: rgba(var(--color-green-positive), 1);
 }
 

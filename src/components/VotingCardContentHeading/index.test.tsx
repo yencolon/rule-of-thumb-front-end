@@ -14,11 +14,3 @@ test('options Grid and List expected in select', () => {
     expect(screen.getByRole('option', { name: 'List' })).toBeInTheDocument()
 
 })
-
-
-test('select options works', () => {
-    render(<VotingCardContentHeading />)
-    userEvent.selectOptions(screen.getByRole('combobox'), screen.getByRole('option', { name: 'List' }))
-    expect(screen.getByRole('option', { name: 'List' }).selected).toBe(true)
-    expect(screen.getByRole('option', { name: 'Grid' }).selected).toBe(false)
-})
