@@ -1,0 +1,14 @@
+.voting-cards__container {
+}
+
+.voting-cards__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.voting-cards__heading > h2 {
+    font-weight: 300;
+    margin: 0;
+}
