@@ -16,7 +16,7 @@ export const getCelebrities = (): Array<ICelebrity> => {
 }
 
 export const emitVote = (celebrity: ICelebrity, approved: boolean): Array<ICelebrity> | undefined => {
-    const data  = getCelebritiesFromLocalStorageOrResources()
+    const data  = getCelebrities()
     const indexOfCelebrity = data.findIndex(celeb => celeb.name === celebrity.name)
 
     if(indexOfCelebrity !== -1){
