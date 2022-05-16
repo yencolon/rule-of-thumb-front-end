@@ -5,6 +5,7 @@ import thumbUp from "../../assets/img/thumbs-up.svg"
 import thumbDown from "../../assets/img/thumbs-down.svg"
 import "./styles.css";
 import GaugeBar from "../GaugeBar";
+import { emitVote } from "../../utils/api";
 
 interface IVotingCardProps {
     showAs?: "square" | "long-rectangle",
@@ -13,8 +14,30 @@ interface IVotingCardProps {
 
 const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
 
+    // This hook defines 3 possibles states
+    // waiting - user has not click any thumb button, so vote button is disabled 
+    // ready - user clicked on some thumb button, so vote button is enabled
+    // emitted - is this state, vote has been emitted and the user can vote again 
+    const [readyToVote, setReadyToVote] = React.useState<"waiting" | "ready" | "emitted">("waiting")
+    const [voteToCast, setVoteToCast] = React.useState(true)
+
     const overallResult = celebrity.overallVotesResult ? "thumbs up" : "thumbs down"
     const overallResultIcon = celebrity.overallVotesResult ? thumbUp : thumbDown
+
+
+    const onStartVoting = (approved: boolean) => {
+        setReadyToVote('ready')
+        setVoteToCast(approved)
+    }
+
+    const onVote = () => {
+        if (readyToVote === 'emitted')
+            setReadyToVote('waiting')
+        else {
+            emitVote(celebrity, voteToCast)
+            setReadyToVote('emitted')
+        }
+    }
 
     return (
         <div className={showAs === "square" ? "voting-card__container--square" : "voting-card__container--rectangle"}>
@@ -35,20 +58,40 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                     }
                     <div>
                         <h2 className="voting-info__title">{celebrity.name}</h2>
-                        <p className="voting-info__description--square">{celebrity.description}</p>
+                        <p className="voting-info__description">{celebrity.description}</p>
                     </div>
                 </div>
                 <div>
-                    <p className="voting-buttons__time">{`about ${calculateHowMuchTimePastFromNow(celebrity.lastUpdated)} in`} <span>{celebrity.category}</span></p>
+                    <p className="voting-buttons__time">
+                        {
+                            readyToVote === 'emitted' ? "Thank you for your vote!" :
+                                `about ${calculateHowMuchTimePastFromNow(celebrity.lastUpdated)} in ${celebrity.category}`
+                        }
+                    </p>
                     <div className="voting-buttons__container">
-                        <button className="icon-button thumb-button_container" aria-label="thumbs up">
-                            <img src={thumbUp} alt="thumbs up" />
-                        </button>
-                        <button className="icon-button thumb-button_container" aria-label="thumbs down">
-                            <img src={thumbDown} alt="thumbs down" />
-                        </button>
-                        <button className="voting_button_container">
-                            Vote Now
+                        {readyToVote !== 'emitted' &&
+                            <>
+                                <button
+                                    onClick={() => onStartVoting(true)}
+                                    className="icon-button thumb-button_container"
+                                    aria-label="thumbs up">
+                                    <img src={thumbUp} alt="thumbs up" />
+                                </button>
+                                <button
+                                    onClick={() => onStartVoting(false)}
+                                    className="icon-button thumb-button_container"
+                                    aria-label="thumbs down">
+                                    <img src={thumbDown} alt="thumbs down" />
+                                </button>
+                            </>
+                        }
+                        <button
+                            className="voting_button_container"
+                            disabled={readyToVote === 'waiting'}
+                            onClick={onVote}>
+                            {
+                                readyToVote === 'waiting' || readyToVote === 'ready' ? "Vote Now" : "Vote Again"
+                            }
                         </button>
                     </div>
                 </div>
