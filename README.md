@@ -1,4 +1,4 @@
-# Technical FED - Zemoga 
+# Technical FED Test - Zemoga 
 
 This is a [Technical skills test](https://github.com/zemoga/ui-test) for Zemoga
 ## To see this app working  
