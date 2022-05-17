@@ -46,10 +46,10 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
 
     return (
         <div className={showAs === "square" ? "voting-card__container--square" : "voting-card__container--rectangle"}>
-            <img src={celebrity.picture} alt={celebrity.name} />
+            <img src={celebrity.picture} alt={celebrity.name}  />
             {
                 showAs === 'long-rectangle' &&
-                <div className="voting-trend__indicator--floating">
+                <div className="voting-trend__indicator--floating" title={overallResult}>
                     <img src={overallResultIcon} alt={overallResult} />
                 </div>
             }
@@ -58,7 +58,7 @@ const VotingCard = ({ celebrity, showAs = "square" }: IVotingCardProps) => {
                     <div>
                         {
                             showAs === 'square' &&
-                            <div className="voting-trend__indicator">
+                            <div className="voting-trend__indicator" title={overallResult}>
                                 <img src={overallResultIcon} alt={overallResult} />
                             </div>
                         }
